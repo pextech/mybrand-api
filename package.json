@@ -4,9 +4,10 @@
   "description": "this is a backend version of my brand",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha test/project-setup-test.js",
     "dev-start": "babel-watch server.js",
-    "build": "babel test/project-setup-test.js --out-dir build"
+    "build": "babel server.js --out-dir build",
+    "start": "babel-node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,11 +20,18 @@
   },
   "homepage": "https://github.com/pextech/mybrand-api#readme",
   "dependencies": {
+    "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
+    "body-parser": "^1.19.0",
+    "enable": "^3.4.0",
     "express": "^4.17.1",
     "moment": "^2.29.1",
+    "mongoose": "^5.11.1",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
     "uuid": "^8.3.1"
   },
