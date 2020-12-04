@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+-12.16.3
+cashe: npm
+
+install:
+ -npm install
+
+script:
+ -npm test
+ -npm run build
+
+deploy:
+ provider: pages
+ skip-cleanup: true
+ github-token: $GITHUB_TOKEN
+ local_dir : build
+ on:
+  branch: master
+
+
