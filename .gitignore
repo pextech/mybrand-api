@@ -1,2 +1,8 @@
 # Dependency directories
 node_modules/
+
+#adding .env
+.env
+
+#ignoring build
+build/
