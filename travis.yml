@@ -1,7 +1,19 @@
 language: node_js
+node_js: '12.16.3'
+cashe: npm
 
-node_js:
-- node
-- 'lts/*'
+install:
+ -npm install
 
-cache: npm
+script:
+ -npm test
+ -npm run build
+
+deploy:
+ skip_cleanup: true
+ github-token: $GITHUB_TOKEN
+ local_dir : build
+ on:
+  branch: develop
+
+
