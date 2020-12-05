@@ -7,6 +7,7 @@ import {} from 'dotenv/config';
 chai.use(chaiHttp);
 const { expect } = chai;
 
+const should = chai.should();
 
 it('has a status of 200', (done) => {
   chai.request(server).keepOpen()
