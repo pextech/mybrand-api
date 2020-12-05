@@ -2,6 +2,9 @@ language: node_js
 node_js: '12.16.3'
 cashe: npm
 
+env: 
+ - PORT: 3000
+
 install: npm ci
 
 script:
