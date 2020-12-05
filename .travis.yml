@@ -11,7 +11,7 @@ script:
 
 deploy:
  skip_cleanup: true
- github-token: $GITHUB_TOKEN
+ github-token: $TOKEN
  local_dir : build
  on:
   branch: main
