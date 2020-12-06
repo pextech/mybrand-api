@@ -1,22 +1,19 @@
-language: node_js
-node_js: '12.16.3'
+--- 
 cashe: npm
-
-env: 
- - PORT: 3000
-
-install: npm ci
-
-script:
- - npm test
- - npm run build
-
-  deploy:
+deploy: 
+  github_token: $TOKEN
+  keep_history: true
+  local_dir: build
   provider: pages
   skip_cleanup: true
-  github_token: $TOKEN
-  local_dir: build
-  keep_history: true
-  on:
+  true: 
     branch: master
-
+env: 
+  - 
+    PORT: 3000
+install: "npm ci"
+language: node_js
+node_js: "12.16.3"
+script: 
+  - "npm test"
+  - "npm run build"
