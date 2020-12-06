@@ -1,13 +1,12 @@
 --- 
 cashe: npm
-deploy: 
-  github_token: $TOKEN
-  keep_history: true
-  local_dir: build
-  provider: pages
+deploy:
+  provider: releases
+  api_key: $TOKEN
+  file: build
   skip_cleanup: true
-  true: 
-    branch: master
+  on:
+    tags: true
 env: 
   - 
     PORT: 3000
