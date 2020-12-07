@@ -1,18 +1,11 @@
 --- 
 cashe: npm
-deploy:
-  provider: releases
-  api_key: $TOKEN
-  file: build
-  skip_cleanup: true
-  on:
-    tags: true
+
 env: 
   - 
     PORT: 3000
 install: "npm ci"
 language: node_js
 node_js: "12.16.3"
-script: 
-  - "npm test"
-  - "npm run build"
+script: "npm test"
+ 
