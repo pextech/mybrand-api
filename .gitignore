@@ -3,6 +3,3 @@ node_modules/
 
 #adding .env
 .env
-
-#ignoring build
-build/
