@@ -1,27 +1,19 @@
-/* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import request from 'request';
-import {} from 'dotenv/config';
-import { Server } from 'http';
-import mongoose from 'mongoose';
 import app from '../server';
-import Contact from '../models/contactModel';
-import contactPost from '../controllers/contactController';
 
 chai.use(chaiHttp);
-const { expect } = chai;
+chai.should();
 
-const should = chai.should();
-
-describe('testing posting a contact review', () => {
-  it('post contact review', (done) => {
+describe('message controllers', () => {
+  it('post a message ', (done) => {
     chai.request(app)
-      .post('/')
+      .post('/messages')
       .send({
-        name: ' pextech ',
+        name: 'pextech',
         email: 'pextech@gmail.com',
-        phone: '078888888',
+        phone: '079999999',
         message: 'okay this is a test with coverage for object check',
       })
       .end((err, res) => {
@@ -30,28 +22,39 @@ describe('testing posting a contact review', () => {
     done();
   });
 
-  // eslint-disable-next-line no-undef
-  it('should have a status of 201', (done) => {
+  it('provides error with incorrect input', (done) => {
     chai.request(app)
-      .post('/')
+      .post('/messages')
       .send({
-        name: ' pextech ',
-        email: 'pextech@gmail.com',
+        email: 'pextech',
         phone: '078888888',
-        message: 'okay this is a test with coverage for status check',
+        message: 'okay this is a test with coverage',
       })
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(500);
+        res.body.should.have.property('error');
+        done();
+      });
+  });
+
+  // below tests won't run now as our current endpoint requires to be authenticated.
+
+  it('Get all messages', (done) => {
+    chai.request(app)
+      .get('/messages')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.a('object');
       });
     done();
   });
 
-  // eslint-disable-next-line no-undef
-  it('should returns a status of 404 for invalid page', (done) => {
+  it('delete message by id', (done) => {
+    const id = '5fd1d6b9c92fb373b2e6abd5';
     chai.request(app)
-      .post('/about')
+      .delete(`/messages/${id}`)
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(200);
       });
     done();
   });

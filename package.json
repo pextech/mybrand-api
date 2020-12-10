@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "babel src/ --out-dir build",
-    "test": " mocha src/tests/ --require @babel/register || true",
+    "test": "mocha src/tests/ --require @babel/register || true --exit",
     "coverage": "nyc npm run test",
     "dev-start": "nodemon --exec babel-node src/server.js",
     "start": "node build/server.js",
@@ -23,11 +23,14 @@
   },
   "homepage": "https://github.com/pextech/mybrand-api#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
