@@ -1,16 +1,22 @@
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
-const _express = _interopRequireDefault(require('express'));
+var _express = _interopRequireDefault(require("express"));
 
-const _contactController = _interopRequireDefault(require('../controllers/contactController'));
+var _contactController = require("../controllers/contactController");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _checkAuth = _interopRequireDefault(require("../auth/checkAuth"));
 
-const router = _express.default.Router();
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-router.post('/', _contactController.default);
-const _default = router;
-exports.default = _default;
+var router = _express["default"].Router();
+
+router.post('/messages', _contactController.contactPost);
+router.get('/messages', _checkAuth["default"], _contactController.contactGet);
+router["delete"]('/messages/:id', _checkAuth["default"], _contactController.contactDelete);
+var _default = router;
+exports["default"] = _default;
