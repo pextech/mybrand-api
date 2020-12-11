@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "babel src/ --out-dir build",
-    "test": "mocha src/tests/ --require @babel/register || true --exit",
+    "test": "mocha src/tests/ --require @babel/register --exit",
     "coverage": "nyc npm run test",
     "dev-start": "nodemon --exec babel-node src/server.js",
     "start": "node build/server.js",
