@@ -3,3 +3,5 @@ node_modules/
 
 #adding .env
 .env
+
+.nyc_output
