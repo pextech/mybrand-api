@@ -4,6 +4,5 @@ node_modules/
 #adding .env
 .env
 
-build
 
 .nyc_output
