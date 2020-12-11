@@ -2,7 +2,7 @@ import express from 'express';
 import {} from 'dotenv/config';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import contactRoute from './routes/contactRoute';
+import contactRoute from './routes/subscribeRoute';
 
 const app = express();
 
