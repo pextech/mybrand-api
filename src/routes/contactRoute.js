@@ -4,8 +4,8 @@ import auth from '../auth/checkAuth';
 
 const router = express.Router();
 
-router.post('/messages', contactPost);
+router.post('/messages/add', contactPost);
 router.get('/messages', auth, contactGet);
-router.delete('/messages/:id', auth, contactDelete);
+router.delete('/messages/delete/:id', auth, contactDelete);
 
 export default router;
