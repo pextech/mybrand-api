@@ -1,8 +1,9 @@
 import express from 'express';
 import {} from 'dotenv/config';
+import morgan from 'morgan';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import contactRoute from './routes/subscribeRoute';
+import blogRoute from './routes/blogRoute';
 
 const app = express();
 
@@ -13,7 +14,7 @@ mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(
   });
 });
 
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -30,7 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', contactRoute);
+app.use('/', blogRoute);
 
 app.use((req, res) => {
   const error = new Error('Page Not found');
