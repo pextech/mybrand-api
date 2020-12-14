@@ -2,7 +2,7 @@ import express from 'express';
 import {} from 'dotenv/config';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import contactRoute from './routes/contactRoute';
+import loginRoute from './routes/loginRoute';
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', contactRoute);
+app.use('/', loginRoute);
 
 app.use((req, res) => {
   const error = new Error('Page Not found');
