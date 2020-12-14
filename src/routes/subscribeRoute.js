@@ -4,8 +4,8 @@ import auth from '../auth/checkAuth';
 
 const router = express.Router();
 
-router.post('/subscribe', subscribePost);
+router.post('/subscribe/add', subscribePost);
 router.get('/subscribe', auth, subscribeGet);
-router.delete('/subscribe/:id', auth, SubscribeDelete);
+router.delete('/subscribe/delete/:id', auth, SubscribeDelete);
 
 export default router;

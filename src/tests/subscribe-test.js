@@ -9,9 +9,9 @@ chai.should();
 describe('subscribe controllers', () => {
   it('subscribes a user ', (done) => {
     chai.request(app)
-      .post('/subscribe')
+      .post('/subscribe/add')
       .send({
-        email: 'pextech@gmail.com',
+        email: 'belse@gmail.com',
       })
       .end((err, res) => {
         res.body.should.be.a('object');
@@ -21,7 +21,7 @@ describe('subscribe controllers', () => {
 
   it('provides error with incorrect input', (done) => {
     chai.request(app)
-      .post('/subscribe')
+      .post('/subscribe/add')
       .send({
         email: 'pextech',
       })
@@ -47,7 +47,7 @@ describe('subscribe controllers', () => {
   xit('delete subscriber by id', (done) => {
     const id = '5fd1d6b9c92fb373b2e6abd5';
     chai.request(app)
-      .delete(`/subscribe/${id}`)
+      .delete(`/subscribe/delete/${id}`)
       .end((err, res) => {
         res.should.have.status(200);
       });
