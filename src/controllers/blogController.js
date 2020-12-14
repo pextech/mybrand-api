@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 import Blog from '../models/blogModel';
+import Comment from '../models/commentModel';
 import {} from 'path';
 import {} from 'fs';
 
@@ -102,4 +103,21 @@ export const blogDelete = (req, res) => {
   })
 
     .catch((err) => { res.status(500).json({ error: err }); });
+};
+
+export const blogComment = (req, res) => {
+  const comments = new Comment({
+    name: req.body.name,
+    message: req.body.message,
+  });
+  comments.save();
+  const { id } = req.params;
+  Blog.find({ _id: id }, { comments }).then((result) => {
+    res.status(201).json({
+      status: 201,
+      message: 'comment is created',
+      comments,
+    });
+    console.log(result);
+  }).catch((err) => { res.status(500).json({ error: err }); });
 };

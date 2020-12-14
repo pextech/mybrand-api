@@ -3,7 +3,7 @@ import express from 'express';
 import path from 'path';
 import multer from 'multer';
 import {
-  blogPost, blogGet, blogDetail, blogDelete, BlogPatch,
+  blogPost, blogGet, blogDetail, blogDelete, BlogPatch, blogComment,
 }
   from '../controllers/blogController';
 import auth from '../auth/checkAuth';
@@ -39,9 +39,10 @@ const upload = multer({
 });
 
 router.post('/blog/add', auth, upload.single('blogImage'), blogPost);
-router.get('/blog/', auth, blogGet);
+router.get('/blog/', blogGet);
 router.get('/blog/get/:id', auth, blogDetail);
 router.patch('/blog/update/:id', auth, upload.single('blogImage'), BlogPatch);
 router.delete('/blog/delete/:id', auth, blogDelete);
+router.post('/blog/get/:id/comment', blogComment);
 
 export default router;

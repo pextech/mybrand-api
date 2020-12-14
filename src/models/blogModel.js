@@ -6,7 +6,6 @@ const blogSchema = new Schema({
 
   blogImage: {
     type: String,
-    required: true,
   },
   title: {
     type: String,
@@ -19,7 +18,7 @@ const blogSchema = new Schema({
   comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'comment',
+      ref: 'Comment',
     },
   ],
 
