@@ -26,7 +26,7 @@ describe('subscribe controllers', () => {
         email: 'pextech',
       })
       .end((err, res) => {
-        res.should.have.status(500);
+        res.should.have.status(404);
         res.body.should.have.property('error');
       });
     done();
