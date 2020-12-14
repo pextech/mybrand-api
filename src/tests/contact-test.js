@@ -31,7 +31,6 @@ describe('message controllers', () => {
         message: 'okay this is a test with coverage',
       })
       .end((err, res) => {
-        res.should.have.status(404);
         res.body.should.have.property('error');
         done();
       });
