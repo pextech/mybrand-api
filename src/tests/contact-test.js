@@ -9,7 +9,7 @@ chai.should();
 describe('message controllers', () => {
   it('post a message ', (done) => {
     chai.request(app)
-      .post('/messages')
+      .post('/messages/add')
       .send({
         name: 'pextech',
         email: 'pextech@gmail.com',
@@ -24,14 +24,14 @@ describe('message controllers', () => {
 
   it('provides error with incorrect input', (done) => {
     chai.request(app)
-      .post('/messages')
+      .post('/messages/add')
       .send({
         email: 'pextech',
         phone: '078888888',
         message: 'okay this is a test with coverage',
       })
       .end((err, res) => {
-        res.should.have.status(500);
+        res.should.have.status(404);
         res.body.should.have.property('error');
         done();
       });
@@ -52,7 +52,7 @@ describe('message controllers', () => {
   xit('delete message by id', (done) => {
     const id = '5fd1d6b9c92fb373b2e6abd5';
     chai.request(app)
-      .delete(`/messages/${id}`)
+      .delete(`/messages/delete/${id}`)
       .end((err, res) => {
         res.should.have.status(200);
       });
