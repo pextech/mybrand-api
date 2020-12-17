@@ -1,7 +1,6 @@
 import express from 'express';
 import {} from 'dotenv/config';
 import fileupload from 'express-fileupload';
-import morgan from 'morgan';
 import mongoose from 'mongoose';
 import blogRoute from './routes/blogRoute';
 
@@ -12,7 +11,6 @@ mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(
   app.listen(process.env.PORT || 5000);
 });
 
-app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.json({ extended: false }));
 app.use(fileupload({ useTempFiles: true }));
