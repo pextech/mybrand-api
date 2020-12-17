@@ -8,7 +8,7 @@
     "test": "mocha src/tests/ --require @babel/register --exit",
     "coverage": "nyc npm run test",
     "dev-start": "nodemon --exec babel-node src/server.js",
-    "start": "node ./build/server.js",
+    "start": "node build/server.js",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },
