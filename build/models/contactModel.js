@@ -1,36 +1,34 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true,
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
-var _mongoose = _interopRequireDefault(require("mongoose"));
+const _mongoose = _interopRequireDefault(require('mongoose'));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Schema = _mongoose["default"].Schema;
-var contactSchema = new Schema({
+const { Schema } = _mongoose.default;
+const contactSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   phone: {
-    type: Number
+    type: Number,
   },
   message: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 }, {
-  timestamps: true
+  timestamps: true,
 });
 
-var Contact = _mongoose["default"].model('Contact', contactSchema);
+const Contact = _mongoose.default.model('Contact', contactSchema);
 
-var _default = Contact;
-exports["default"] = _default;
+const _default = Contact;
+exports.default = _default;
