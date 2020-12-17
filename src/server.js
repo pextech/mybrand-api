@@ -32,6 +32,9 @@ app.use((req, res, next) => {
 app.use('/', blogRoute);
 app.use('/', contactRoute);
 
+app.use('/', (req, res) => {
+  res.status(200).json({ message: 'Welcome to my APi, have fun!!' });
+});
 app.use((req, res) => {
   const error = new Error('Page Not found');
   res.status(404).json({
