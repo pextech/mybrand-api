@@ -9,9 +9,11 @@ var _express = _interopRequireDefault(require("express"));
 
 require("dotenv/config");
 
+var _expressFileupload = _interopRequireDefault(require("express-fileupload"));
+
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var _bodyParser = _interopRequireDefault(require("body-parser"));
+var _blogRoute = _interopRequireDefault(require("./routes/blogRoute"));
 
 var _contactRoute = _interopRequireDefault(require("./routes/contactRoute"));
 
@@ -24,16 +26,16 @@ _mongoose["default"].connect(URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(function () {
-  app.listen(process.env.PORT || 5000, function () {
-    console.log("the server started running on port ".concat(process.env.PORT, " "));
-  });
-}); // app.use(morgan('dev'));
+  app.listen(process.env.PORT || 5000);
+});
 
-
-app.use(_bodyParser["default"].urlencoded({
+app.use(_express["default"].json());
+app.use(_express["default"].json({
   extended: false
 }));
-app.use(_bodyParser["default"].json()); // eslint-disable-next-line consistent-return
+app.use((0, _expressFileupload["default"])({
+  useTempFiles: true
+})); // eslint-disable-next-line consistent-return
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -46,6 +48,7 @@ app.use(function (req, res, next) {
 
   next();
 });
+app.use('/', _blogRoute["default"]);
 app.use('/', _contactRoute["default"]);
 app.use(function (req, res) {
   var error = new Error('Page Not found');

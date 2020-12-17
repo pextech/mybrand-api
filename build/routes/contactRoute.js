@@ -15,8 +15,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var router = _express["default"].Router();
 
-router.post('/messages', _contactController.contactPost);
-router.get('/messages', _checkAuth["default"], _contactController.contactGet);
-router["delete"]('/messages/:id', _checkAuth["default"], _contactController.contactDelete);
+router.post('/messages/add', _contactController.contactPost);
+router.get('/messages', _contactController.contactGet);
+router["delete"]('/messages/delete/:id', _checkAuth["default"], _contactController.contactDelete);
 var _default = router;
 exports["default"] = _default;

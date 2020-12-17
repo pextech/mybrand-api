@@ -5,7 +5,7 @@ node_modules/
 .env
 
 tmp
-
+build/test
 .nyc_output
 
 tmp/
