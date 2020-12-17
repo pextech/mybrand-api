@@ -1,21 +1,19 @@
 import express from 'express';
 import {} from 'dotenv/config';
+import fileupload from 'express-fileupload';
 import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import contactRoute from './routes/contactRoute';
+import blogRoute from './routes/blogRoute';
 
 const app = express();
 
 const URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.fyxsl.mongodb.net/mybrand?retryWrites=true&w=majority`;
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
-  app.listen(process.env.PORT || 5000, () => {
-    console.log(`the server started running on port ${process.env.PORT} `);
-  });
+  app.listen(process.env.PORT || 5000);
 });
 
-// app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.json({ extended: false }));
+app.use(fileupload({ useTempFiles: true }));
 
 // eslint-disable-next-line consistent-return
 app.use((req, res, next) => {
@@ -30,7 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', contactRoute);
+app.use('/', blogRoute);
 
 app.use((req, res) => {
   const error = new Error('Page Not found');
