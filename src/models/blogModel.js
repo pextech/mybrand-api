@@ -4,9 +4,8 @@ const { Schema } = mongoose;
 
 const blogSchema = new Schema({
 
-  blogImage: {
-    type: String,
-  },
+  imageUrl: { type: String },
+  imageId: { type: String },
   title: {
     type: String,
     required: true,

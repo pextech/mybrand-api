@@ -1,10 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
+import jwt from 'jsonwebtoken';
 import app from '../server';
 
 chai.use(chaiHttp);
 chai.should();
+
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1jc3RhaW4xNjM5QGdtYWlsLmNvbSIsInVzZXJJZCI6IjVmYmUzZTkyMGUyNjc3MTFhY2FmYTQ4YSIsImlhdCI6MTYwODIyNjI1OCwiZXhwIjoxNjA4MjI5ODU4fQ.z2DgdSR756lxrA5wdHFdFibc26KS_3z7bf06I9uIPAA';
+jwt.verify(token, process.env.TOKEN);
 
 // // below tests won't run now as our current endpoint requires to be authenticated.
 
@@ -43,10 +47,11 @@ describe('Tests for blog endpoints', () => {
     done();
   });
 
-  xit('get Blog by id', (done) => {
-    const id = '5fc29ffa9645111c68beaf01';
+  it('get Blog by id', (done) => {
+    const id = '5fdb9f9081c3811c8866ee94';
     chai.request(app)
       .get(`/blog/get/${id}`)
+      .set({ Authorization: `Bearer ${token}` })
       .end((err, res) => {
         expect(res.body.data).to.be.an('object');
         res.should.have.status(200);

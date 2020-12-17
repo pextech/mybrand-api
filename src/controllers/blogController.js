@@ -2,25 +2,26 @@
 /* eslint-disable no-underscore-dangle */
 import Blog from '../models/blogModel';
 import Comment from '../models/commentModel';
+import uploader from '../util/cloudinary';
 import {} from 'path';
 import {} from 'fs';
 
-export const blogPost = (req, res) => {
-  const blog = new Blog({
-
-    blogImage: req.file.filename,
-    title: req.body.title,
-    description: req.body.description,
+export const blogPost = async (req, res) => {
+  const blog = await Blog.create({
+    ...req.body,
+    imageUrl: '',
+    imageId: '',
   });
-  blog.save().then((result) => {
-    res.status(201).json({
-      status: 201,
-      message: 'blog is created',
-      blog,
-    });
-    console.log(result);
-    console.log(req.file.path);
-  }).catch((err) => { res.status(500).json({ error: err }); });
+
+  if (req.files) {
+    const tmp = req.files.image.tempFilePath;
+    const result = await uploader.upload(tmp, (_, result) => result);
+    blog.imageUrl = result.url;
+    blog.imageId = result.public_id;
+    blog.save();
+
+    return res.status(201).json({ success: true, data: blog });
+  }
 };
 
 export const blogGet = (req, res) => {

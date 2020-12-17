@@ -7,3 +7,6 @@ node_modules/
 build
 
 .nyc_output
+
+tmp/
+uploads/
