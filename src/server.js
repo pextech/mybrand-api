@@ -4,6 +4,7 @@ import fileupload from 'express-fileupload';
 import mongoose from 'mongoose';
 import blogRoute from './routes/blogRoute';
 import contactRoute from './routes/contactRoute';
+import userRoute from './routes/userRoute';
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.get('/',(req,res) => {
 });
 app.use('/', blogRoute);
 app.use('/', contactRoute);
+app.use('/', userRoute);
 
 app.use((req, res) => {
   const error = new Error('Page Not found');
