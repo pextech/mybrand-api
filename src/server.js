@@ -28,8 +28,8 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.get('/',(req,res) => {
-  res.status(200).json({message: 'Hey, you made it to my API, have fun'});
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Hey, you made it to my API, have fun' });
 });
 app.use('/', blogRoute);
 app.use('/', contactRoute);

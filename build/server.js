@@ -1,43 +1,41 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true,
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
-var _express = _interopRequireDefault(require("express"));
+const _express = _interopRequireDefault(require('express'));
 
-require("dotenv/config");
+require('dotenv/config');
 
-var _expressFileupload = _interopRequireDefault(require("express-fileupload"));
+const _expressFileupload = _interopRequireDefault(require('express-fileupload'));
 
-var _mongoose = _interopRequireDefault(require("mongoose"));
+const _mongoose = _interopRequireDefault(require('mongoose'));
 
-var _blogRoute = _interopRequireDefault(require("./routes/blogRoute"));
+const _blogRoute = _interopRequireDefault(require('./routes/blogRoute'));
 
-var _contactRoute = _interopRequireDefault(require("./routes/contactRoute"));
+const _contactRoute = _interopRequireDefault(require('./routes/contactRoute'));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = (0, _express["default"])();
-var URI = "mongodb+srv://".concat(process.env.DB_USER, ":").concat(process.env.DB_PASSWORD, "@cluster0.fyxsl.mongodb.net/mybrand?retryWrites=true&w=majority");
+const app = (0, _express.default)();
+const URI = 'mongodb+srv://'.concat(process.env.DB_USER, ':').concat(process.env.DB_PASSWORD, '@cluster0.fyxsl.mongodb.net/mybrand?retryWrites=true&w=majority');
 
-_mongoose["default"].connect(URI, {
+_mongoose.default.connect(URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(function () {
+  useUnifiedTopology: true,
+}).then(() => {
   app.listen(process.env.PORT || 5000);
 });
 
-app.use(_express["default"].json());
-app.use(_express["default"].json({
-  extended: false
+app.use(_express.default.json());
+app.use(_express.default.json({
+  extended: false,
 }));
-app.use((0, _expressFileupload["default"])({
-  useTempFiles: true
+app.use((0, _expressFileupload.default)({
+  useTempFiles: true,
 })); // eslint-disable-next-line consistent-return
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type,Accept,Authorization');
 
@@ -48,15 +46,15 @@ app.use(function (req, res, next) {
 
   next();
 });
-app.use('/', _blogRoute["default"]);
-app.use('/', _contactRoute["default"]);
-app.use(function (req, res) {
-  var error = new Error('Page Not found');
+app.use('/', _blogRoute.default);
+app.use('/', _contactRoute.default);
+app.use((req, res) => {
+  const error = new Error('Page Not found');
   res.status(404).json({
     error: {
-      message: error.message
-    }
+      message: error.message,
+    },
   });
 });
-var _default = app;
-exports["default"] = _default;
+const _default = app;
+exports.default = _default;

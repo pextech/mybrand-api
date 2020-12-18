@@ -1,27 +1,25 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true,
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
-var _path = _interopRequireDefault(require("path"));
+const _path = _interopRequireDefault(require('path'));
 
-var _multer = _interopRequireDefault(require("multer"));
+const _multer = _interopRequireDefault(require('multer'));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var storage = _multer["default"].diskStorage({
+const storage = _multer.default.diskStorage({
   destination: function destination(req, file, cb) {
-    cb(null, _path["default"].join(__dirname, '../uploads'));
+    cb(null, _path.default.join(__dirname, '../uploads'));
   },
   filename: function filename(req, file, cb) {
-    cb(null, Date.now() + _path["default"].extname(file.originalname));
-  }
+    cb(null, Date.now() + _path.default.extname(file.originalname));
+  },
 });
 
-var upload = (0, _multer["default"])({
-  storage: storage,
+const upload = (0, _multer.default)({
+  storage,
   fileFilter: function fileFilter(req, file, cb) {
     if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/PNG') {
       cb(null, true);
@@ -33,8 +31,8 @@ var upload = (0, _multer["default"])({
     return 'file filter done';
   },
   limits: {
-    fileSize: 1024 * 1024 * 30
-  }
+    fileSize: 1024 * 1024 * 30,
+  },
 });
-var _default = upload;
-exports["default"] = _default;
+const _default = upload;
+exports.default = _default;

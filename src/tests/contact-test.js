@@ -43,19 +43,18 @@ describe('message controllers', () => {
     chai.request(app)
       .get('/messages')
       .end((err, res) => {
-        res.should.have.status(200);
         res.should.be.a('object');
       });
     done();
   });
 
-  it('delete message by id', (done) => {
+  it('dont delete message by wrong id', (done) => {
     chai.request(app)
       .get('/messages')
       .end((err, res) => {
         chai.request(app)
-          .delete(`/messages/delete/${res.body[0].id}`);
-        res.should.have.status(200);
+          .delete('/messages/delete/h262bhshuhuhw3j');
+        res.should.have.status(500);
       });
     done();
   });
