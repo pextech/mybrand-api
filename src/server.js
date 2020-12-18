@@ -2,11 +2,45 @@ import express from 'express';
 import {} from 'dotenv/config';
 import fileupload from 'express-fileupload';
 import mongoose from 'mongoose';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 import blogRoute from './routes/blogRoute';
 import contactRoute from './routes/contactRoute';
 import userRoute from './routes/userRoute';
+import subscribeRoute from './routes/subscribeRoute';
 
 const app = express();
+
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Mupenzi mybrand Api-documentation',
+      version: '0.1.0',
+      description:
+        'This a route endpoint that  documented my APi with Swagger',
+      contact: {
+        name: 'Mupenzi cedrick',
+        url: 'https://pextech.github.io/MyRezume/html/',
+        email: 'mcstain1639@gmail.com',
+      },
+    },
+    servers: [
+      {
+        url: 'https://api-mybrand.herokuapp.com/',
+      },
+    ],
+    produces: ['application/json'],
+  },
+  apis: ['./src/routes/*.js'],
+};
+
+const specs = swaggerJsdoc(options);
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(specs, { explorer: true }),
+);
 
 const URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.fyxsl.mongodb.net/mybrand?retryWrites=true&w=majority`;
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
@@ -34,6 +68,7 @@ app.get('/', (req, res) => {
 app.use('/', blogRoute);
 app.use('/', contactRoute);
 app.use('/', userRoute);
+app.use('/', subscribeRoute);
 
 app.use((req, res) => {
   const error = new Error('Page Not found');
