@@ -7,14 +7,12 @@ export const subscribePost = (req, res) => {
     email: req.body.email,
 
   });
-  subscribe.save().then((result) => {
+  subscribe.save().then(() => {
     res.status(201).json({
       status: 201,
       message: 'successfuly subscribed',
       data: subscribe,
     });
-    // eslint-disable-next-line no-console
-    console.log(result);
   }).catch((err) => { res.status(500).json({ error: err }); });
 };
 
