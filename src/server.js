@@ -2,7 +2,7 @@ import express from 'express';
 import {} from 'dotenv/config';
 import fileupload from 'express-fileupload';
 import mongoose from 'mongoose';
-import blogRoute from './routes/blogRoute';
+import userRoute from './routes/userRoute';
 
 const app = express();
 
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', blogRoute);
+app.use('/', userRoute);
 
 app.use((req, res) => {
   const error = new Error('Page Not found');
