@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-shadow */
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 import Blog from '../models/blogModel';
