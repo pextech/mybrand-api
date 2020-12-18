@@ -7,8 +7,8 @@ import auth from '../auth/checkAuth';
  * /messages/add:
  *   post:
  *     tags:
- *       - Message
- *     name: Message
+ *       - Messages
+ *     name: Messages
  *     summary: Creates Message
  *     consumes:
  *        - multipart/form-data
@@ -43,7 +43,7 @@ import auth from '../auth/checkAuth';
  *   get:
  *     tags:
  *       - Messages
- *     name: Message
+ *     name: Messages
  *     summary: Retrieve all Messages
  *     consumes:
  *        - application/json

@@ -9,8 +9,8 @@ const router = express.Router();
  * /subscribe:
  *   post:
  *     tags:
- *       - Subscribe
- *     name: Subscribe
+ *       - Subscription
+ *     name: Subscription
  *     summary: Creates Subscriptions
  *     consumes:
  *        - multipart/form-data
@@ -35,8 +35,8 @@ const router = express.Router();
  * /subscribe/get:
  *   get:
  *     tags:
- *       - Subscribers
- *     name: Subscribers
+ *       - Subscription
+ *     name: Subscription
  *     summary: Retrieve all Subscriptions
  *     consumes:
  *        - application/json
@@ -53,8 +53,8 @@ const router = express.Router();
  * /subscribe/delete/{id}:
  *   delete:
  *     tags:
- *       - Subscribers
- *     name: Subscribers
+ *       - Subscription
+ *     name: Subscription
  *     summary: delete one Subscriber
  *     consumes:
  *        - application/json
