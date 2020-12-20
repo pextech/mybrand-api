@@ -8,7 +8,7 @@ import auth from '../auth/checkAuth';
 
 /**
  * @swagger
- * /blog/add:
+ * /blog:
  *   post:
  *     tags:
  *       - Blogs
@@ -55,7 +55,7 @@ import auth from '../auth/checkAuth';
 
 /**
  * @swagger
- * /blog/get/{id}:
+ * /blog/{id}:
  *   get:
  *     tags:
  *       - Blogs
@@ -81,7 +81,7 @@ import auth from '../auth/checkAuth';
 
 /**
  * @swagger
- * /blog/get/{id}/comment:
+ * /blog/{id}/comment:
  *   post:
  *     tags:
  *       - Blogs
@@ -114,7 +114,7 @@ import auth from '../auth/checkAuth';
 
 /**
  * @swagger
- * /blog/update/{id}:
+ * /blog/{id}:
  *   patch:
  *     tags:
  *       - Blogs
@@ -149,7 +149,7 @@ import auth from '../auth/checkAuth';
 
 /**
  * @swagger
- * /blog/delete/{id}:
+ * /blog/{id}:
  *   delete:
  *     tags:
  *       - Blogs

@@ -32,7 +32,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /subscribe/get:
+ * /subscribe:
  *   get:
  *     tags:
  *       - Subscription
@@ -50,7 +50,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /subscribe/delete/{id}:
+ * /subscribe/{id}:
  *   delete:
  *     tags:
  *       - Subscription

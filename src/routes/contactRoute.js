@@ -4,7 +4,7 @@ import auth from '../auth/checkAuth';
 
 /**
  * @swagger
- * /messages/add:
+ * /messages:
  *   post:
  *     tags:
  *       - Messages
@@ -57,7 +57,7 @@ import auth from '../auth/checkAuth';
 
 /**
  * @swagger
- * /messages/delete/{id}:
+ * /messages/{id}:
  *   delete:
  *     tags:
  *       - Messages
