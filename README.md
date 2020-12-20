@@ -1,12 +1,11 @@
 
 ![build status](https://travis-ci.org/pextech/mybrand-api.svg?branch=develop)
 
-# mybrand-api
-# mybrand-UI
-
 My personal portfolio website
 
-![image](landing.png)
+![Node/Express/mybrand-api](landing.png)
+
+# mybrand-api
 
 # API Endpoints included
 
