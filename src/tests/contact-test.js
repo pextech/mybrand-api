@@ -10,7 +10,7 @@ chai.should();
 describe('message controllers', () => {
   it('post a message ', (done) => {
     chai.request(app)
-      .post('/messages/add')
+      .post('/messages')
       .send({
         name: 'pextech',
         email: 'pextech@gmail.com',
@@ -25,7 +25,7 @@ describe('message controllers', () => {
 
   it('provides error with incorrect input', (done) => {
     chai.request(app)
-      .post('/messages/add')
+      .post('/messages')
       .send({
         email: 'pextech',
         phone: '078888888',
@@ -53,7 +53,7 @@ describe('message controllers', () => {
       .get('/messages')
       .end((err, res) => {
         chai.request(app)
-          .delete('/messages/delete/h262bhshuhuhw3j');
+          .delete('/messages/h262bhshuhuhw3j');
         res.should.have.status(500);
       });
     done();

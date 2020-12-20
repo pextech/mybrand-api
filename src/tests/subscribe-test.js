@@ -36,7 +36,7 @@ describe('subscribe controllers', () => {
 
   it('Get all Subscribers', (done) => {
     chai.request(app)
-      .get('/subscribe/get')
+      .get('/subscribe')
       .end((err, res) => {
         res.should.be.a('object');
       });
@@ -46,7 +46,7 @@ describe('subscribe controllers', () => {
   it('cant delete subscriber by wrong id', (done) => {
     const id = '5fd1d6b9c92fb373b2e6abd5';
     chai.request(app)
-      .delete(`/subscribe/delete/${id}`)
+      .delete(`/subscribe/${id}`)
       .end((err, res) => {
         res.should.have.status(500);
       });

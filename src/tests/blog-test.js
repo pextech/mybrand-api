@@ -30,7 +30,7 @@ describe('Tests for blog endpoints', () => {
   it('delete Blog by id', (done) => {
     const id = '5fdb9f9081c3811c8866ee94';
     chai.request(app)
-      .delete(`/blog/delete/${id}`)
+      .delete(`/blog/${id}`)
       .end((err, res) => {
         res.should.have.status(500);
         expect(id).to.be.a('string');
@@ -43,7 +43,7 @@ describe('Tests for blog endpoints', () => {
       .get('/blog/')
       .end((err, res) => {
         chai.request(app)
-          .delete(`/blog/delete/${res.body[0]._id}`);
+          .delete(`/blog/${res.body[0]._id}`);
         expect(res.body).to.have.property('message');
         res.should.have.status(500);
       });
@@ -55,7 +55,7 @@ describe('Tests for blog endpoints', () => {
       .get('/blog')
       .end((err, res) => {
         chai.request(app)
-          .get(`blog/get/${res.body[0]._id}`);
+          .get(`blog/${res.body[0]._id}`);
         expect(res.body).to.be.an('object');
         res.should.have.status(200);
         expect(res.body[0]._id).to.be.a('string');
@@ -68,7 +68,7 @@ describe('Tests for blog endpoints', () => {
       .get('/blog/')
       .end((err, res) => {
         chai.request(app)
-          .get(`blog/get/${res.body[0]._id}`);
+          .get(`blog/${res.body[0]._id}`);
         expect(res.body).to.have.property('message');
         res.should.have.status(500);
       });
@@ -78,7 +78,7 @@ describe('Tests for blog endpoints', () => {
   it('should create post', () => {
     const res = chai
       .request(app)
-      .post('/blog/add')
+      .post('/blog')
       .field('title', testPost.Title)
       .field('Description', testPost.Description);
     res.should.be.a('object');
