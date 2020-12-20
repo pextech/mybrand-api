@@ -3,7 +3,7 @@
 
 My personal portfolio website
 
-![Node/Express/mybrand-api](landing.png)
+![image](https://github.com/pextech/mybrand-api/blob/develop/landing.PNG)
 
 # mybrand-api
 
