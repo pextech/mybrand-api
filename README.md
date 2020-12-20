@@ -1,6 +1,6 @@
 
 ![build status](https://travis-ci.org/pextech/mybrand-api.svg?branch=develop)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)
 
 My personal portfolio website
 
