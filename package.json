@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build": "babel src/. --out-dir build",
-    "test": "mocha src/tests/ --require @babel/register --exit",
-    "coverage": "nyc npm run test",
+    "test": "mocha src/tests/ --require @babel/register --timeout 3000 --exit",
+    "coverage": "nyc npm run test ",
     "dev-start": "nodemon --exec babel-node src/server.js",
     "start": "node build/server.js",
     "lint": "eslint .",
@@ -34,7 +34,11 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "swagger-jsdoc": "^6.0.0-rc.5",
-    "swagger-ui-express": "^4.1.5"
+    "swagger-ui-express": "^4.1.5",
+    "@babel/polyfill": "^7.12.1"
+  },"nyc": {
+    "include": "./src/server.js", 
+    "exclude": "./controller/" 
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
@@ -48,8 +52,8 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.2.1",
-    "nyc": "^15.1.0",
     "nodemon": "^2.0.6",
+    "nyc": "^15.1.0",
     "request": "^2.88.2"
   }
 }

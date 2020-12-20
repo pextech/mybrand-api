@@ -7,6 +7,11 @@ import app from '../server';
 chai.use(chaiHttp);
 chai.should();
 
+const testPost = {
+  Title: 'this is awesome',
+  Description: 'bla bla bla bla',
+};
+
 // // below tests won't run now as our current endpoint requires to be authenticated.
 
 describe('Tests for blog endpoints', () => {
@@ -70,19 +75,12 @@ describe('Tests for blog endpoints', () => {
     done();
   });
 
-  it('Post a blog ', (done) => {
-    chai.request(app)
+  it('should create post', () => {
+    const res = chai
+      .request(app)
       .post('/blog/add')
-      .send({
-        imageUrl: '',
-        imageId: '',
-        title: 'okay lets test this endpoint',
-        description: 'i am testing this endpoint',
-      })
-      .end((err, res) => {
-        res.body.should.be.a('object');
-        expect(res).to.have.status(500);
-      });
-    done();
+      .field('title', testPost.Title)
+      .field('Description', testPost.Description);
+    res.should.be.a('object');
   });
 });

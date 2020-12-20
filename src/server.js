@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import '@babel/polyfill';
 import express from 'express';
 import {} from 'dotenv/config';
 import fileupload from 'express-fileupload';

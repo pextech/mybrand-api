@@ -173,11 +173,11 @@ import auth from '../auth/checkAuth';
 
 const router = express.Router();
 
-router.post('/blog/add', auth, blogPost);
-router.get('/blog/', blogGet);
-router.get('/blog/get/:id', blogDetail);
-router.patch('/blog/update/:id', auth, BlogPatch);
-router.delete('/blog/delete/:id', auth, blogDelete);
-router.post('/blog/get/:id/comment', blogComment);
+router.post('/blog', auth, blogPost);
+router.get('/blog', blogGet);
+router.get('/blog/:id', blogDetail);
+router.patch('/blog/:id', auth, BlogPatch);
+router.delete('/blog/:id', auth, blogDelete);
+router.post('/blog/:id/comment', blogComment);
 
 export default router;
